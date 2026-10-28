@@ -1,30 +1,21 @@
-import {useEffect, useState} from "react"
-
-export interface Task {
-    id: string,
-    title: string
-    status: string
-}
+import { useTasks } from "@entities/task"
 
 export const App = () => {
-    const [tasks, setTasks] = useState<Task[]>([])
-    const [loading, setLoading] = useState<boolean>(true)
+    const {data: tasks, isLoading, isError} = useTasks()
 
-    useEffect(() => {
-        fetch('/api/tasks').then(response=> response.json()).then(data => { 
-            setTasks(data)
-            setLoading(false)
-        })
-    }, [])
-    if(loading) {
+    if(isLoading) {
         return <span>Загрузка...</span>
+    }
+
+    if(isError) {
+        return <span>Не удалось загрузить список задач</span>
     }
 
     return (
         <div>
             <h1>Мои задачи</h1>
             <ul>
-            {tasks.map(task => (
+            {tasks?.map(task => (
                 <li key={task.id}>
                     {task.title} - <b>{task.status}</b>
                 </li>
