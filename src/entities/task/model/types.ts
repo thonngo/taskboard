@@ -3,3 +3,7 @@ export interface Task {
     title: string
     status: string
 }
+
+export interface CreateTaskDto {
+    title: string;
+}
