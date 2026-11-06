@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { App } from '@app/App'
 import { QueryClientProvider } from '@tanstack/react-query'
 import {queryClient} from '@shared/api'
+import './index.css'
 
 const enableMocking = async() => {
   if (import.meta.env.DEV) {
