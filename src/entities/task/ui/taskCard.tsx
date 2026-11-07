@@ -3,7 +3,7 @@ import type { Task } from '../model/types';
 import { twMerge } from 'tailwind-merge';
 
 export interface TaskCardProps {
-  task: Task[];
+  task: Task;
 }
 
 export const TaskCard: FC<TaskCardProps> = ({ task }) => {
