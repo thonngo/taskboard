@@ -1,7 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { fetchTasks } from "../api";
+import { useQuery } from '@tanstack/react-query';
+import { fetchTasks } from '../api';
 
-export const useTasks = () => useQuery({
+export const useTasks = () =>
+  useQuery({
     queryKey: ['tasks'],
-    queryFn: fetchTasks
-})
+    queryFn: fetchTasks,
+  });

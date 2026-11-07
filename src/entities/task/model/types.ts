@@ -1,9 +1,9 @@
 export interface Task {
-    id: string
-    title: string
-    status: string
+  id: string;
+  title: string;
+  status: string;
 }
 
 export interface CreateTaskDto {
-    title: string;
+  title: string;
 }

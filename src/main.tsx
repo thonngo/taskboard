@@ -1,16 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { App } from '@app/App'
-import { QueryClientProvider } from '@tanstack/react-query'
-import {queryClient} from '@shared/api'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { App } from '@app/App';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@shared/api';
+import './index.css';
 
-const enableMocking = async() => {
+const enableMocking = async () => {
   if (import.meta.env.DEV) {
-    const { worker } = await import('@shared/mocks/browser')
-    return worker.start()
+    const { worker } = await import('@shared/mocks/browser');
+    return worker.start();
   }
-}
+};
 
 enableMocking().then(() => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -18,6 +18,6 @@ enableMocking().then(() => {
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </QueryClientProvider>
-  )
-})
+    </QueryClientProvider>,
+  );
+});

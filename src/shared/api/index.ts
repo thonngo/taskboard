@@ -1,2 +1,2 @@
-export {apiClient} from './axios'
-export {queryClient} from './queryClient'
+export { apiClient } from './axios';
+export { queryClient } from './queryClient';
