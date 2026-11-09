@@ -1,6 +1,7 @@
-import { TaskCard, useTasks } from '@entities/task';
+import { useTasks } from '@entities/task';
 import { useCreateTask } from '@features/create-task/model/useCreateTask';
 import { ButtonCreate, Input } from '@shared/ui';
+import { TaskCard } from '@widgets/task';
 import { useCallback, useState } from 'react';
 
 export const App = () => {

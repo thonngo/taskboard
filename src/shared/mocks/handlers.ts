@@ -29,4 +29,26 @@ export const handlers: HttpHandler[] = [
       );
     },
   ),
+  http.patch<{ id: string }, { status: string }, Task>(
+    `/api/tasks/:id`,
+    async ({ params, request }) => {
+      const { status } = await request.json();
+      const { id: userId } = params;
+
+      mockTasks = mockTasks.map((item) => {
+        if (item.id === userId) {
+          return {
+            ...item,
+            status: status,
+          };
+        } else {
+          return item;
+        }
+      });
+
+      const updatedTask = mockTasks.find((task) => task.id === userId);
+
+      return HttpResponse.json(updatedTask, { status: 200 });
+    },
+  ),
 ];
