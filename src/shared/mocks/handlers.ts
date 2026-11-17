@@ -33,10 +33,10 @@ export const handlers: HttpHandler[] = [
     `/api/tasks/:id`,
     async ({ params, request }) => {
       const { status } = await request.json();
-      const { id: userId } = params;
+      const { id: taskId } = params;
 
       mockTasks = mockTasks.map((item) => {
-        if (item.id === userId) {
+        if (item.id === taskId) {
           return {
             ...item,
             status: status,
@@ -46,9 +46,16 @@ export const handlers: HttpHandler[] = [
         }
       });
 
-      const updatedTask = mockTasks.find((task) => task.id === userId);
+      const updatedTask = mockTasks.find((task) => task.id === taskId);
 
       return HttpResponse.json(updatedTask, { status: 200 });
     },
   ),
+  http.delete<{ id: string }, never, null>('/api/tasks/:id', async ({ params }) => {
+    const { id: taskId } = params;
+
+    mockTasks = mockTasks.filter((task) => task.id !== taskId);
+
+    return HttpResponse.json(null, { status: 200 });
+  }),
 ];
