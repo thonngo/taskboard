@@ -5,7 +5,7 @@ export const useDeleteTask = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: ['tasks'],
+    mutationKey: ['tasks', 'delete'],
     mutationFn: deleteTask,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks'] }),
     onError: (error: Error) => console.error('Ошибка useDeleteTask', error.message),

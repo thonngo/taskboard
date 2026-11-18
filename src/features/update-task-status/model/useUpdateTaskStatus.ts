@@ -5,7 +5,7 @@ export const useUpdateTaskStatus = () => {
   const queryClinet = useQueryClient();
 
   return useMutation({
-    mutationKey: ['tasks'],
+    mutationKey: ['tasks', 'updateStatus'],
     mutationFn: updateTaskStatus,
     onSuccess: () => queryClinet.invalidateQueries({ queryKey: ['tasks'] }),
     onError: (error: Error) => console.error('Ошибка useUpdateTaskStatus', error.message),

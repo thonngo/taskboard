@@ -5,7 +5,7 @@ export const useCreateTask = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: ['task'],
+    mutationKey: ['tasks', 'create'],
     mutationFn: createTask,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tasks'] }),
     onError: (error: Error) => console.error('Ошибка useCreateTask', error.message),

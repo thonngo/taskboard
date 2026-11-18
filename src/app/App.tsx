@@ -2,7 +2,7 @@ import { useTasks } from '@entities/task';
 import { useCreateTask } from '@features/create-task/model/useCreateTask';
 import { ButtonCreate, Input } from '@shared/ui';
 import { TaskCard } from '@widgets/task';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 export const App = () => {
   const { data: tasks, isLoading, isError } = useTasks();
@@ -13,13 +13,13 @@ export const App = () => {
   };
 
   const { isPending, mutateAsync } = useCreateTask();
-  const handleCreate = useCallback(async () => {
+  const handleCreate = async () => {
     try {
       await mutateAsync({ title });
     } finally {
       setTitle('');
     }
-  }, [mutateAsync, title]);
+  };
 
   if (isLoading) {
     return <span>Загрузка...</span>;
